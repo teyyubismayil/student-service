@@ -5,6 +5,7 @@ import com.teyyub.testservice.student.model.entity.Student
 import com.teyyub.testservice.student.model.dto.StudentDto
 import com.teyyub.testservice.student.repository.StudentRepository
 import com.teyyub.testservice.student.service.api.StudentService
+import org.springframework.data.domain.Example
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -13,7 +14,8 @@ class StudentServiceImpl(
     val studentRepository: StudentRepository
 ) : StudentService {
 
-    override fun findAll(): List<Student> = studentRepository.findAll()
+    override fun findAll(name: String?, surname: String?, email: String?): List<Student> =
+        studentRepository.findAll(Example.of(Student(name, surname, email)))
 
     override fun findById(id: Int) = studentRepository.findById(id)
 

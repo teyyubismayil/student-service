@@ -21,5 +21,9 @@ data class Student(
     @Column(nullable = false)
     var email: String?
 ) {
-    constructor(): this(null, null, null, null)
+    constructor():
+            this(null, null, null, null)
+
+    constructor(name: String?, surname: String?, email: String?):
+            this(null, name, surname, email)
 }

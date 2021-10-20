@@ -1,6 +1,8 @@
 server:
   servlet:
     context-path: /TestService
+  error:
+    include-message: always
 spring:
   application:
     name: TestService

@@ -15,10 +15,15 @@ class StudentController(
 ) {
 
     @GetMapping
-    fun getAll(): List<Student> = studentService.findAll()
+    fun findAll(
+        @RequestParam(required = false) name: String?,
+        @RequestParam(required = false) surname: String?,
+        @RequestParam(required = false) email: String?
+    ): List<Student> =
+        studentService.findAll(name, surname, email)
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: Int): Student =
+    fun findById(@PathVariable id: Int): Student =
         studentService.findById(id)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Student was not found") }
 
