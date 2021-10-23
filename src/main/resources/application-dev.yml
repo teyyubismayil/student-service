@@ -3,14 +3,13 @@ server:
     context-path: /TestService
   error:
     include-message: always
+    include-binding-errors: always
 spring:
   application:
     name: TestService
-  datasource:
-    url: jdbc:h2:file:~/sampleDB
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
